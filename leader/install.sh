@@ -20,6 +20,7 @@ iface wlan0 inet static
   wireless-essid RPiLEDNetwork
   wireless-mode ad-hoc
 "
+mv /etc/network/interfaces /etc/network/interfaces-backup
 echo "$NetworkInterface" >> /etc/network/interfaces
 
 ifdown wlan1
