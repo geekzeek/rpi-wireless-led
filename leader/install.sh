@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root, IE: sudo make install-leader"
+  return 1
+fi
+
 echo "INFO: Configuring RPiLEDNetwork"
 
 NetworkInterface="
@@ -36,5 +41,5 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
 }
 "
 
-echo "$DHCPConfig" >> /etc/dhcp/dhcpd.conf
+echo "$DHCPConfig" > /etc/dhcp/dhcpd.conf
 echo "Installation complete. Restart the Pi, and RPiLEDNetwork will be an available WiFi network"
