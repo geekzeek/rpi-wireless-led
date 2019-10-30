@@ -5,9 +5,6 @@ if [ "$EUID" -ne 0 ]
   exit 1
 fi
 
-# remove previously installed packages
-apt purge udhcpd busybox
-
 # restore from backups if they exist or delete the files
 if [ -e /etc/rc.local.adhoc_bak ]
 then
