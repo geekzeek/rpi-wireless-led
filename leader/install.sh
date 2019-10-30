@@ -30,5 +30,9 @@ cp leader/rc.local /etc
 cp leader/udhcpd.conf /etc
 cp leader/dhcpcd.conf /etc
 
+mkdir /etc/rpi-wireless-leader
+cp leader/status.sh /etc/rpi-wireless-leader
+chmod +x /etc/rpi-wireless-leader/status.sh
+
 echo "Installation complete. Please reboot now for changes to take effect."
 exit 0

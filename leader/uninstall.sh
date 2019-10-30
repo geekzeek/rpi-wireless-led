@@ -27,6 +27,7 @@ else
     rm /etc/dhcpcd.conf
 fi
 rm /etc/dhcpcd.conf.adhoc_bak
+rm -rf /etc/rpi-wireless-leader
 
 echo "Please reboot now for changes to take effect."
 exit 0
