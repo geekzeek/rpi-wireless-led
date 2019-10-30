@@ -5,4 +5,6 @@ if [ "$EUID" -ne 0 ]
   return 1
 fi
 
-#TODO
+rm /etc/network/interfaces
+mv /etc/network/interfaces-backup /etc/network/interfaces
+rm /etc/dhcp/dhcpd.conf
