@@ -27,5 +27,4 @@ cp network/rc.local /etc
 cp network/udhcpd.conf /etc
 cp network/dhcpcd.conf /etc
 
-echo "Installation complete. Please reboot now for changes to take effect."
 exit 0

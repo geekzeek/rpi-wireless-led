@@ -6,3 +6,5 @@ if [ "$EUID" -ne 0 ]
 fi
 
 #TODO
+
+echo "Installation complete. Please reboot now for changes to take effect."
