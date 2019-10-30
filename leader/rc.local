@@ -6,17 +6,35 @@
 # Make sure that the script will "exit 0" on success or any other
 # value on error.
 
+echo 1 >sys/class/leds/led0/brightness
+
 ifconfig wlan0 down
 iwconfig wlan0 mode Ad-Hoc
 iwconfig wlan0 essid led-network  # Change Raspberry-Pi-1 to whatever name you like
 #iwconfig wlan0 key 3b205742624039762d586f4f3e    # Uncomment this line to use a WEP key
+echo 1 >sys/class/leds/led0/brightness
+sleep 1
+echo 0 >sys/class/leds/led0/brightness
+sleep 1
+echo 1 >sys/class/leds/led0/brightness
+sleep 1
+echo 0 >sys/class/leds/led0/brightness
+sleep 1
+echo 1 >sys/class/leds/led0/brightness
+sleep 1
+echo 0 >sys/class/leds/led0/brightness
 sleep 1
 ifconfig wlan0 192.168.2.2           # This should agree with the IP address in udhcpd.conf
 ifconfig wlan0 up
 udhcpd /etc/udhcpd.conf
+systemctl status dhcpcd.service
+rc=$?; if [[ $rc != 0 ]]; then systemctl start dhcpcd.service; fi
 
 # Enable SSH
 systemctl enable ssh
 systemctl start ssh
+
+# After leader network is setup, enable the green LED
+echo 0 >sys/class/leds/led0/brightness
 
 exit 0
